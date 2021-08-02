@@ -1,3 +1,23 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
+AGE_CHOICES=(
+    ('All','All')
+    ('Kids')
+
+)
+class CustomUser(AbstractUser):
+    Profiles=Models.ManyToManyField('profile',null= True,blank=True)
+
+class Profile(models.Model):
+    name=Models.CharField(max_length=225)
+    age_limit=models.CharField(max_length=10,choices=AGE_CHOICES)
+    uuid=models.UUIDField(default=uuid.uuid4)
+
+class Movie(models.Model):
+    title=models.CharField(max-length=225)
+    description=models.TextField(blank=True,null=True)
+    created=models.DateTimeField(auto_now_add=True)
+    uuid=models.UUIDField(default=uuid.uuid4)
+class
 # Create your models here.
